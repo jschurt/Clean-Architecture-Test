@@ -55,12 +55,15 @@ namespace WebUI
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ClienteContext clienteContext)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+
+                //Populando dados fake nas tabelas
+                DbInitializer.Initialize(clienteContext);
             }
             else
             {
