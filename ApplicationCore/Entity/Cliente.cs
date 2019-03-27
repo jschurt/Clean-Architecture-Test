@@ -15,7 +15,7 @@ namespace ApplicationCore.Entity
         public long EnderecoId { get; set; }
         public Endereco Endereco { get; set; }
 
-        public IEnumerable<ProfissaoClienteJunc> ProfissaoClientes { get; set; }
+        public ICollection<ProfissaoClienteJunc> ProfissaoClientes { get; set; }
 
     } //class
 } //namespace
