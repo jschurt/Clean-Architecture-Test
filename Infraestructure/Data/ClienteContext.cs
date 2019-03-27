@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Entity;
+using Infraestructure.EntityConfig;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -19,44 +20,17 @@ namespace Infraestructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Cliente>()
-                .ToTable("Cliente");
 
             modelBuilder.Entity<Contato>()
                        .ToTable("Contato");
 
-            #region Cliente table Configuration...
-
-            modelBuilder.Entity<Cliente>()
-                .Property(c => c.CPF)
-                .HasColumnType("varchar(11)")
-                .IsRequired();
-
-            modelBuilder.Entity<Cliente>()
-                .Property(c => c.Nome)
-                .HasColumnType("varchar(200)")
-                .IsRequired();
-
-            #endregion
-
-            #region Contato table Configuration...
-
-            modelBuilder.Entity<Contato>()
-                .Property(c => c.Nome)
-                .HasColumnType("varchar(200)")
-                .IsRequired();
-
-            modelBuilder.Entity<Contato>()
-                .Property(c => c.Email)
-                .HasColumnType("varchar(100)")
-                .IsRequired();
-
-            modelBuilder.Entity<Contato>()
-                .Property(c => c.Telefone)
-                .HasColumnType("varchar(150)");
-
-            #endregion
-
+            modelBuilder.ApplyConfiguration(new ClienteMap());
+            modelBuilder.ApplyConfiguration(new ContatoMap());
+            modelBuilder.ApplyConfiguration(new EnderecoMap());
+            modelBuilder.ApplyConfiguration(new MenuMap());
+            modelBuilder.ApplyConfiguration(new ProfissaoMap());
+            modelBuilder.ApplyConfiguration(new ProfissaoClienteJuncMap());
+            
         } //OnModelCreating
 
 

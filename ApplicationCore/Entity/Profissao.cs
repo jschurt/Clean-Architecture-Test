@@ -4,16 +4,12 @@ using System.Text;
 
 namespace ApplicationCore.Entity
 {
-    public class Cliente
+    public class Profissao
     {
-        public long ClienteId { get; set; }
+        public long ProfissaoId { get; set; }
         public string Nome { get; set; }
-        public string CPF { get; set; }
-
-        public ICollection<Contato> Contatos { get; set; }
-
-        public long EnderecoId { get; set; }
-        public Endereco Endereco { get; set; }
+        public string Descricao { get; set; }
+        public string CBO { get; set; }
 
         public IEnumerable<ProfissaoClienteJunc> ProfissaoClientes { get; set; }
 
